@@ -1,10 +1,8 @@
-# auth-graphql
-Authentication app with graphql and express
 
 
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">auth-graphql</h1>
 
 <div align="center">
    Solution for a challenge from  <a href="https://investondaba.notion.site/Fullstack-Intermediate-Test-2-c911eab2a18446d4a87eb5ca938f13ad" target="_blank">daba full stack intermediate coding exercise</a>.
