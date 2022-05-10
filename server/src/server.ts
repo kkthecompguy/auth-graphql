@@ -1,7 +1,8 @@
 import express from 'express';
-import expressGraphql from 'express-graphql';
-import { GraphQLSchema } from 'graphql';
+import { graphqlHTTP } from 'express-graphql';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import schema from './schemas';
 
 dotenv.config();
 
@@ -16,13 +17,20 @@ interface serverConfig {
 const app: express.Application = express();
 const port: string|number = process.env.PORT || 3001;
 
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  graphiql: true
+}));
+
 
 const server: serverConfig = {
   connect: async function() {
     try {
-      console.log('mongodb connected successfully')
+      let mongouri: string = process.env.MONGO_URI || '';
+      await mongoose.connect(mongouri);
+      console.log('mongodb connected successfully');
     } catch (error) {
-      console.log('connection failed')
+      console.log('connection failed');
     }
   },
   init: function() {
