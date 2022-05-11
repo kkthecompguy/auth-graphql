@@ -20,9 +20,9 @@
     "build": "tsc",
     "dev": "nodemon ./src/server.ts",
     "test": "jest",
-    "startServer": "node ./build/server.js",
+    "startServer": "concurrently \"npm run startServer\" \"npm run client\"",
     "client": "npm start --prefix ../client",
-    "start": "concurrently \"npm run startServer\" \"npm run client\""
+    "start": "node ./build/server.js"
   },
   "postinstall": "npm run build",
   "keywords": [
