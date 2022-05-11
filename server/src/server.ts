@@ -1,9 +1,10 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { graphqlHTTP } from 'express-graphql';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import schema from './schemas';
 import cors from 'cors';
+import path from 'path';
 
 dotenv.config();
 
@@ -19,12 +20,17 @@ const app: express.Application = express();
 const port: string|number = process.env.SERVER_PORT || 3001;
 
 app.use(cors());
+app.use(express.json());
+app.use(express.static('../../client/build'))
 
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true
 }));
 
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'build', 'index.html'));
+});
 
 const server: serverConfig = {
   connect: async function() {
