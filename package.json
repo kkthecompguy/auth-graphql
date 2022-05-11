@@ -1,0 +1,24 @@
+{
+  "name": "auth-graphql",
+  "version": "1.0.0",
+  "description": "graphql auth app",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm start --prefix server",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix server && npm run build --prefix server && npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkthecompguy/auth-graphql.git"
+  },
+  "keywords": [
+    "graphql",
+    "app"
+  ],
+  "author": "Kosam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkthecompguy/auth-graphql/issues"
+  },
+  "homepage": "https://github.com/kkthecompguy/auth-graphql#readme"
+}
