@@ -16,7 +16,7 @@ interface serverConfig {
 
 
 const app: express.Application = express();
-const port: string|number = process.env.PORT || 3001;
+const port: string|number = process.env.SERVER_PORT || 3001;
 
 app.use(cors());
 
