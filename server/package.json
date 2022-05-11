@@ -22,7 +22,7 @@
     "test": "jest",
     "startServer": "node ./build/server.js",
     "client": "npm start --prefix ../client",
-    "start": "concurrently \"npm run dev \"npm run client\""
+    "start": "concurrently \"npm run startServer \"npm run client\""
   },
   "postinstall": "npm run build",
   "keywords": [
