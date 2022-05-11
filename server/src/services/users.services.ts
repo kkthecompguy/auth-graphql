@@ -8,6 +8,7 @@ interface IUser {
   phone: string,
   bio?: string,
   photo?: string,
+  lastLogin?: Date,
   createdAt: Date,
   updateAt: Date
 }
@@ -27,6 +28,7 @@ interface UserUpdateRequest {
   phone?: string,
   bio?: string,
   photo?: string,
+  password?: string
 }
 
 interface LoginRequest {
@@ -70,7 +72,14 @@ async function createUser(user:UserRequest): Promise<IUser> {
 }
 
 async function updateUser(userId: string, user:UserUpdateRequest): Promise<IUser|null> {
-  return await UserModel.findOneAndUpdate({_id: userId}, user);
+  const userObj = await UserModel.findOne({_id: userId});
+  let password: string;
+  if (user.password) {
+    password = await userObj.hash(user.password);
+    return await UserModel.findOneAndUpdate({_id: userId}, {...user, password: password});
+  } else {
+    return await UserModel.findOneAndUpdate({_id: userId}, user);
+  }
 }
 
 async function deleteUser(userId: string): Promise<CustomResponse> {
@@ -89,6 +98,8 @@ async function login(loginRequest: LoginRequest): Promise<LoginResponse> {
     const isMatch = await user.comparePass(loginRequest.password);
     if (!isMatch) return {success: false, code: 403, message: 'invalid credentials'};
     const jwt = await user.getJWT();
+    user.lastLogin = Date.now()
+    await user.save()
     return {success: true, code: 200, message: 'successful login', accessToken: jwt, tokenType: 'Bearer', user: user }
   } catch (error) {
     return {success: false, code: 500, message: 'internal server error'}

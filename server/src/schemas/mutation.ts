@@ -11,9 +11,9 @@ export const RootMutationType = new GraphQLObjectType({
       type: UserType,
       description: 'create new user',
       args: {
-        name: { type: GraphQLNonNull(GraphQLString) },
+        name: { type: GraphQLString },
         email: { type: GraphQLNonNull(GraphQLString) },
-        phone: { type: GraphQLNonNull(GraphQLString) },
+        phone: { type: GraphQLString },
         password: { type: GraphQLNonNull(GraphQLString) },
         bio: { type: GraphQLString },
         photo: { type: GraphQLString },
@@ -26,7 +26,7 @@ export const RootMutationType = new GraphQLObjectType({
       type: UserType,
       description: 'update user',
       args: {
-        userId: { type: GraphQLString },
+        userId: { type: GraphQLNonNull(GraphQLString) },
         name: { type: GraphQLString },
         email: { type: GraphQLString },
         phone: { type: GraphQLString },
@@ -35,7 +35,7 @@ export const RootMutationType = new GraphQLObjectType({
         photo: { type: GraphQLString },
       },
       resolve: async (_, args) => {
-        return await usersServices.updateUser(args.userId, {name: args.name, email: args.email, phone: args.phone, bio: args.bio, photo: args.photo})
+        return await usersServices.updateUser(args.userId, {name: args.name, email: args.email, phone: args.phone, bio: args.bio, photo: args.photo, password: args.password})
       }
     },
     deleteUser: {

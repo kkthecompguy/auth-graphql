@@ -4,12 +4,13 @@ export const UserType = new GraphQLObjectType({
   name: 'User',
   description: 'This represent the user object',
   fields: () => ({
-    _id: { type: GraphQLString },
-    name: { type: GraphQLNonNull(GraphQLString) },
+    _id: { type: GraphQLNonNull(GraphQLString) },
+    name: { type: GraphQLString },
     email: { type: GraphQLNonNull(GraphQLString) },
-    phone: { type: GraphQLNonNull(GraphQLString) },
+    phone: { type: GraphQLString },
     bio: { type: GraphQLString },
     photo: { type: GraphQLString },
+    lastLogin: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
   })

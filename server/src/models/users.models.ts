@@ -8,13 +8,13 @@ dotenv.config();
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: false,
     minlength: 3,
     maxlength: 20
   },
   phone: {
     type: String,
-    required: true,
+    required: false,
     minlength: 10
   },
   email: {
@@ -37,6 +37,9 @@ const UserSchema = new mongoose.Schema({
   },
   photo: {
     type: String
+  },
+  lastLogin: {
+    type: Date
   }
 }, {
   timestamps: true
@@ -48,6 +51,11 @@ UserSchema.pre('save', async function(){
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+UserSchema.methods.hash = async function(password:string) {
+  const salt = await bcrypt.genSalt(10);
+  return await bcrypt.hash(password, salt);
+}
 
 
 const signOptions: SignOptions = {
