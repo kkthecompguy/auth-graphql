@@ -10,11 +10,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://auth-graphql-c.herokuapp.com/demo">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://auth-graphql-c.herokuapp.com">
       Solution
     </a>
     <span> | </span>
@@ -51,14 +51,19 @@ Introduce your projects by taking a screenshot, video recordings or a gif. Try t
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [Vue.js](https://vuejs.org/)
-- [Tailwind](https://tailwindcss.com/)
+- [Node.js](https://nodejs.org/)
+- [Expess.js](https://expressjs.com/)
+- [GraphQL](https://graphql.org/)
+- [Boostrap](https://getboostrap.com/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
 What features did you develop?
+* GraphQL Api (CRUD Operations)
+* Integration of API with React
+* UI interface React APP
 
 ## How To Use
 
@@ -68,11 +73,21 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/kkthecompguy/auth-graphql
 
 # Install dependencies
-$ npm install
+$ cd server && npm install
+$ cd client && npm install
+
+
+# Environment variables
+MONGO_URI=
+JWT_SECRET=
+CLOUD_NAME=
+APY_KEY=
+API_SECRET=
 
 # Run the app
-$ npm start
+$ cd server && npm run dev
+$ cd client && npm start
 ```
