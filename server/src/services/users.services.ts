@@ -116,6 +116,7 @@ async function uploadAvatar(request: UploadRequest): Promise<CustomResponse> {
     await user.save();
     return {success: true, code: 200, message: 'avatar uploaded successfully'}
   } catch (error) {
+    console.log(error)
     return {success: false, code: 500, message: 'internal server error'}
   }
 }
