@@ -29,7 +29,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', '..', 'client', 'build', 'index.html'));
 });
 
 const server: serverConfig = {

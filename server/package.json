@@ -20,7 +20,7 @@
     "build": "tsc",
     "dev": "nodemon ./src/server.ts",
     "test": "jest",
-    "startServer": "concurrently \"npm run startServer\" \"npm run client\"",
+    "startServer": "concurrently \"npm run dev\" \"npm run client\"",
     "client": "npm start --prefix ../client",
     "start": "node ./build/server.js"
   },
