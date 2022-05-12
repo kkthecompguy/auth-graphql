@@ -79,8 +79,7 @@ async function updateUser(userId: string, user:UserUpdateRequest): Promise<IUser
     console.log(password);
     return await UserModel.findOneAndUpdate({_id: userId}, {...user, password: password});
   } else {
-    delete user.password;
-    return await UserModel.findOneAndUpdate({_id: userId}, {name: user.name, email: user.email, bio: user.bio, phone: user.phone});
+    return await UserModel.findOneAndUpdate({_id: userId}, {name: user.name, email: user.email, phone: user.phone, bio: user.bio});
   }
 }
 
