@@ -47,7 +47,9 @@
 Introduce your projects by taking a screenshot, video recordings or a gif. Try to tell us about the solution you built by answering the following:
 
 - Where can I see your demo?
+* [You can find the demo for the project at](https://auth-graphql-c.herokuapp.com)
 - What was your experience building it.
+* It was quite an engaging project but with sure critique
 
 ### Built With
 
