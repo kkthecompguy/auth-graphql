@@ -5,7 +5,7 @@
 <h1 align="center">auth-graphql</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="https://investondaba.notion.site/Fullstack-Intermediate-Test-2-c911eab2a18446d4a87eb5ca938f13ad" target="_blank">daba full stack intermediate coding exercise</a>.
+   Solution for a challenge from  <a href="https://investondaba.notion.site/Backend-Intermediate-Test-2-4648d8d0f3e54200aeafc340aadddf8a" target="_blank">daba backend intermediate coding exercise</a>.
 </div>
 
 <div align="center">
@@ -18,7 +18,7 @@
       Solution
     </a>
     <span> | </span>
-    <a href="https://investondaba.notion.site/Fullstack-Intermediate-Test-2-c911eab2a18446d4a87eb5ca938f13ad">
+    <a href="https://investondaba.notion.site/Backend-Intermediate-Test-2-4648d8d0f3e54200aeafc340aadddf8a">
       Exercise
     </a>
   </h3>
