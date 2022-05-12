@@ -46,6 +46,9 @@
 
 Introduce your projects by taking a screenshot, video recordings or a gif. Try to tell us about the solution you built by answering the following:
 
+![auth-login](https://user-images.githubusercontent.com/45688067/168149563-fdfdd611-b2a7-4200-9b12-15f0e45c2588.png)
+
+
 - Where can I see your demo?
 * [You can find the demo for the project at](https://auth-graphql-c.herokuapp.com)
 - What was your experience building it.
