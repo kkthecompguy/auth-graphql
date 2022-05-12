@@ -78,6 +78,7 @@ async function updateUser(userId: string, user:UserUpdateRequest): Promise<IUser
     password = await userObj.hash(user.password);
     return await UserModel.findOneAndUpdate({_id: userId}, {...user, password: password});
   } else {
+    delete user.password;
     return await UserModel.findOneAndUpdate({_id: userId}, user);
   }
 }
