@@ -99,7 +99,7 @@ async function login(loginRequest: LoginRequest): Promise<LoginResponse> {
     const isMatch = await user.comparePass(loginRequest.password);
     if (!isMatch) return {success: false, code: 403, message: 'invalid credentials'};
     const jwt = await user.getJWT();
-    user.lastLogin = Date.now()
+    user.lastLogin = new Date()
     await user.save()
     return {success: true, code: 200, message: 'successful login', accessToken: jwt, tokenType: 'Bearer', user: user }
   } catch (error) {
