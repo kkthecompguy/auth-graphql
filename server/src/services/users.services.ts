@@ -74,12 +74,13 @@ async function createUser(user:UserRequest): Promise<IUser> {
 async function updateUser(userId: string, user:UserUpdateRequest): Promise<IUser|null> {
   const userObj = await UserModel.findOne({_id: userId});
   let password: string;
-  if (user.password) {
+  if (user.password?.trim() !== "") {
     password = await userObj.hash(user.password);
+    console.log(password);
     return await UserModel.findOneAndUpdate({_id: userId}, {...user, password: password});
   } else {
     delete user.password;
-    return await UserModel.findOneAndUpdate({_id: userId}, user);
+    return await UserModel.findOneAndUpdate({_id: userId}, {name: user.name, email: user.email, bio: user.bio, phone: user.phone});
   }
 }
 
@@ -99,7 +100,7 @@ async function login(loginRequest: LoginRequest): Promise<LoginResponse> {
     const isMatch = await user.comparePass(loginRequest.password);
     if (!isMatch) return {success: false, code: 403, message: 'invalid credentials'};
     const jwt = await user.getJWT();
-    user.lastLogin = new Date()
+    user.lastLogin = Date.now();
     await user.save()
     return {success: true, code: 200, message: 'successful login', accessToken: jwt, tokenType: 'Bearer', user: user }
   } catch (error) {
