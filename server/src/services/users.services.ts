@@ -74,11 +74,11 @@ async function createUser(user:UserRequest): Promise<IUser> {
 async function updateUser(userId: string, user:UserUpdateRequest): Promise<IUser|null> {
   const userObj = await UserModel.findOne({_id: userId});
   let password: string;
-  if (user.password) {
+  if (user.password?.trim() !== "") {
     password = await userObj.hash(user.password);
     return await UserModel.findOneAndUpdate({_id: userId}, {...user, password: password});
   } else {
-    return await UserModel.findOneAndUpdate({_id: userId}, user);
+    return await UserModel.findOneAndUpdate({_id: userId}, {name: user.name, email: user.email, phone: user.phone, bio: user.bio});
   }
 }
 

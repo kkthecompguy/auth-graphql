@@ -10,7 +10,8 @@ export const GET_USER = gql`
       bio,
       photo,
       createdAt,
-      updatedAt
+      updatedAt,
+      lastLogin
     }
   }
 `;

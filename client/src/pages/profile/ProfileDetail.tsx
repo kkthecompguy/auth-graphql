@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import Layout from "../../components/layout/Layout";
 import Navbar from '../../components/layout/Navbar';
 import { GET_USER } from '../../api/profile';
+import moment from 'moment';
 
 interface UserObject {
   name?: string;
@@ -14,6 +15,7 @@ interface UserObject {
   password: string;
   createdAt?: string;
   updatedAt?: string;
+  lastLogin?: Date;
 }
 
 function ProfileDetail() {
@@ -30,7 +32,7 @@ function ProfileDetail() {
   useEffect(() => {
     if (data) {
       setUser(current => {
-        return {...current, name: data.user.name, email: data.user.email, phone: data.user.phone, password: "", bio: data.user.bio, photo: data.user.photo, createdAt: data.user.createdAt, updatedAt: data.user.updatedAt }
+        return {...current, name: data.user.name, email: data.user.email, phone: data.user.phone, password: "", bio: data.user.bio, photo: data.user.photo, createdAt: data.user.createdAt, updatedAt: data.user.updatedAt, lastLogin: new Date(Number(data.user.lastLogin)) }
       });
     }
   }, [data]);
@@ -67,7 +69,11 @@ function ProfileDetail() {
           </div>
           <div className="detail-wrapper">
             <div className="detail-label">EMAIL</div>
-            <div className="detail-info">{user?.name}</div>
+            <div className="detail-info">{user?.email}</div>
+          </div>
+          <div className="detail-wrapper">
+            <div className="detail-label">LAST LOGIN</div>
+            <div className="detail-info">{moment(user?.lastLogin).format('LLLL')}</div>
           </div>
           <div className="detail-wrapper">
             <div className="detail-label">PASSWORD</div>
