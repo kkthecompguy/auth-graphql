@@ -98,5 +98,5 @@ API_SECRET=
 
 # Run the app
 $ cd server && npm run dev
-$ cd client && npm start
+$ cd client && npm run startDev
 ```
